@@ -190,15 +190,11 @@ public class Main {
                 if (ArabicMath(inputArray.get(2))) { //-- второй операнд
                     //-- арабский калькулятор
                     return ArabicCalc(inputArray) + "";
-                } else {
-                    throw new Exception(INCORRECT_MATH_OPERATION_MESSAGE);
                 }
             } else {
                 if (RomanMath(inputArray.get(2))) { //-- второй операнд римский?
                     //-- римский калькулятор
                     return RomanCalc(inputArray) + "";
-                } else {
-                    throw new Exception(INCORRECT_MATH_OPERATION_MESSAGE);
                 }
             }
         }
