@@ -40,7 +40,7 @@ public class Main {
     }
 
     // Разбивает входящюю строку на список (по условию X + X etc)
-    static List<String> Split(String input) throws NullPointerException {
+    static List<String> split(String input) throws NullPointerException {
         if (input == null)
             throw new NullPointerException(NULL_STRING_EXCEPTION_MESSAGE);
 
@@ -69,7 +69,7 @@ public class Main {
     }
 
     // Проверяем арабские числа от 1 до 10
-    static boolean ArabicMath(String input) {
+    static boolean arabicMath(String input) {
         try {
             int value = Integer.parseInt(input.trim());
             if (value >= 1 && value <= 10) {
@@ -82,7 +82,7 @@ public class Main {
     }
 
     // Проверяем римские числа от 1 до 10
-    static boolean RomanMath(String input) {
+    static boolean romanMath(String input) {
         String[] roman = new String[]{"I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", "X"};
         for (String s : roman)
             if (s.equals(input.trim()))
@@ -139,7 +139,7 @@ public class Main {
     }
 
     // вычисление
-    static int Calculation(int first, int second, String operator) {
+    static int calculation(int first, int second, String operator) {
         switch (operator) {
             case "+":
                 return first + second;
@@ -155,15 +155,15 @@ public class Main {
     }
 
     // арабские числа и расчет
-    static int ArabicCalc(List<String> inputArray) {
+    static int arabicCalc(List<String> inputArray) {
         int first = Integer.parseInt(inputArray.get(0));
         String operator = inputArray.get(1);
         int second = Integer.parseInt(inputArray.get(2));
-        return Calculation(first, second, operator);
+        return calculation(first, second, operator);
     }
 
     // римские числа, перевод в арабские и расчет, а так же исключение если входящие числа не соответствуют требованиям
-    static String RomanCalc(List<String> inputArray) throws Exception {
+    static String romanCalc(List<String> inputArray) throws Exception {
         int first = romanToArabic(inputArray.get(0));
         String operator = inputArray.get(1);
         int second = romanToArabic(inputArray.get(2));
@@ -171,7 +171,7 @@ public class Main {
         if (first < 1 || first > 10 || second < 1 || second > 10)
             throw new Exception(INCORRECT_MATH_OPERATION_MESSAGE);
 
-        int result = Calculation(first, second, operator);
+        int result = calculation(first, second, operator);
 
         if (result < 1) {
             throw new Exception(ROMAN_NEGATIVE_EXCEPTION_MESSAGE);
@@ -182,19 +182,19 @@ public class Main {
     // Калькулятор
     public static String Calc(String input) throws Exception {
 
-        List<String> inputArray = Split(input);
+        List<String> inputArray = split(input);
         //-- Состоит ли выражение из 3 частей, согласно условиям
         if (inputArray.size() == 3) {
             //-- Проверим на соответсвие арабским или римским цифрам
-            if (ArabicMath(inputArray.get(0))) { //-- первый операнд
-                if (ArabicMath(inputArray.get(2))) { //-- второй операнд
+            if (arabicMath(inputArray.get(0))) { //-- первый операнд
+                if (arabicMath(inputArray.get(2))) { //-- второй операнд
                     //-- арабский калькулятор
-                    return ArabicCalc(inputArray) + "";
+                    return arabicCalc(inputArray) + "";
                 }
             } else {
-                if (RomanMath(inputArray.get(2))) { //-- второй операнд римский?
+                if (romanMath(inputArray.get(2))) { //-- второй операнд римский?
                     //-- римский калькулятор
-                    return RomanCalc(inputArray) + "";
+                    return romanCalc(inputArray) + "";
                 }
             }
         }
