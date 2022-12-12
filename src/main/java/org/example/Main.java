@@ -180,7 +180,7 @@ public class Main {
     }
 
     // Калькулятор
-    public static String Calc(String input) throws Exception {
+    public static String calc(String input) throws Exception {
 
         List<String> inputArray = split(input);
         //-- Состоит ли выражение из 3 частей, согласно условиям
@@ -212,7 +212,7 @@ public class Main {
         do {
             str = reader.readLine();
             if (str.length() >= 3) { //-- минимальная длина строки "1+1" = 3 символа
-                result = Calc(str);
+                result = calc(str);
                 System.out.println(result);
             } else {
                 throw new Exception(INCORRECT_MATH_OPERATION_MESSAGE);
